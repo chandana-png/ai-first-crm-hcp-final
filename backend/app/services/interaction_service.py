@@ -20,3 +20,11 @@ def create_interaction(db: Session, interaction: InteractionCreate):
     db.refresh(db_interaction)
 
     return db_interaction
+
+
+def get_all_interactions(db: Session):
+    return (
+        db.query(Interaction)
+        .order_by(Interaction.id.desc())
+        .all()
+    )
